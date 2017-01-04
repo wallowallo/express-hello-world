@@ -1,16 +1,16 @@
 var express = require('express');
 var app = express();
+var fs = require('fs');
+var path = require('path');
 
-app.get('/', function(req, res) {
-  res.send({
-  "data": [
-    { "title": "Do homework", "description": "Mathmatics" },
-    { "title": "Clean my room", "description": "Stow away clothes" },
-    { "title": "Hit the gym", "description": "Do chest and back exercises" },
-  ]
-}
-);
-});
+var JSONStream = require('JSONStream');
+
+app.get('/', function (req, res) {
+  var title = req.params.title
+  var description = req.params.description
+  var readable = fs.createReadStream('./todo.json')
+  readable.pipe(res)
+})
 
 app.listen(3000, function() {
   console.log('app listening on port 3000');
