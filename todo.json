@@ -1,8 +1,6 @@
 {
-  "data": [
-    { "title": "Do homework", "description": "Mathmatics" },
-    { "title": "Clean my room", "description": "Stow away clothes" },
-    { "title": "Hit the gym", "description": "Do chest and back exercises" }
+"data": [
+    {"title": "hello", "description": "world"},
+    {"title": "make dinner", "description": "steak"}
   ]
 }
-

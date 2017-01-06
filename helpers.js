@@ -2,7 +2,7 @@ var fs = require('fs')
 var path = require('path')
 
 function getTodoFilePath () {
-  return path.join('todo.json')
+  return path.join('out.json')
 }
 
 function saveTodo (title, description, data) {
