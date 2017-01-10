@@ -1,11 +1,21 @@
 var express = require('express');
 var app = express();
+
 var fs = require('fs');
 var path = require('path');
-var helpers = require('./helpers');
 var bodyParser = require('body-parser');
-
 var JSONStream = require('JSONStream');
+
+var todos = require('./todo.json')
+
+function getTodoFilePath () {
+  return path.join('./todo.json')
+}
+
+function saveTodo (data) {
+  var fp = getTodoFilePath()
+  fs.writeFileSync(fp, JSON.stringify(data, null, 2), {encoding: 'utf8'})
+}
 
 app.use(bodyParser.json());
 
@@ -17,10 +27,6 @@ app.get('/', function (req, res) {
 });
 
 app.post('/', function(req, res) {
-  var title = req.params.title
-  var description = req.params.description
-  console.log(helpers.saveTodo(req.body))
-  console.log(req.body)
 });
 
 // app.put('/', function(req, res) {
