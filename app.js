@@ -15,8 +15,18 @@ app.get('/', function (req, res) {
   })
 });
 
-app.post('/', function(req, res) {
+app.post('/', function(req, res, next) {
+  var todo = new Todo({
+    title: req.body.title,
+    description: req.body.description
+  })
+  todo.save(function(err, todo) {
+    if(err) {return next(err) } 
+    res.status(201).json(todo)
+  })
 });
+
+//app.delete()
 
 app.listen(3000, function() {
   console.log('app listening on port 3000');
