@@ -4,7 +4,7 @@ var app = express();
 var fs = require('fs');
 var path = require('path');
 var bodyParser = require('body-parser');
-var JSONStream = require('JSONStream');
+
 var Todo = require('./db').Todo
 
 app.use(bodyParser.json());
@@ -21,7 +21,7 @@ app.post('/', function(req, res, next) {
     description: req.body.description
   })
   todo.save(function(err, todo) {
-    if(err) {return next(err) } 
+    if(err) {return next(err) }
     res.status(201).json(todo)
   })
 });
