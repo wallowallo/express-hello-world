@@ -26,7 +26,14 @@ app.post('/', function(req, res, next) {
   })
 });
 
-//app.delete()
+app.delete('/', function(req, res) {
+  Todo.findByIdAndRemove(req.params._id, function(err, todo) {
+    var response = {
+      message: 'todo deleted',
+    };
+    res.send(response);
+  })
+})
 
 app.listen(3000, function() {
   console.log('app listening on port 3000');
