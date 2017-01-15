@@ -22,17 +22,14 @@ app.post('/', function(req, res, next) {
   })
   todo.save(function(err, todo) {
     if(err) {return next(err) }
-    res.status(201).json(todo)
+    var data = { data: todo }
+    res.status(201).json(data)
   })
 });
 
 app.delete('/:_id', function(req, res) {
-  Todo.findByIdAndRemove(req.params._id, function(err, id) {
-    var response = {
-      message: 'todo deleted',
-      id: id
-    };
-    res.send(response);
+  Todo.findByIdAndRemove(req.params._id, function(err, todo) {
+    res.send(todo.description);
   })
 })
 
