@@ -26,8 +26,8 @@ app.post('/', function(req, res, next) {
   })
 });
 
-app.delete('/', function(req, res) {
-  Todo.findByIdAndRemove(req.params.id, function(err, id) {
+app.delete('/:_id', function(req, res) {
+  Todo.findByIdAndRemove(req.params._id, function(err, id) {
     var response = {
       message: 'todo deleted',
       id: id
