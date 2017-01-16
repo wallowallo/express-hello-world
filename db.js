@@ -14,5 +14,11 @@ var todoSchema = mongoose.Schema({
   description: String
 })
 
+var userSchema = mongoose.Schema({
+  username: String,
+  password: String
+})
+
 exports.Todo = mongoose.model('Todo', todoSchema)
+exports.User = mongoose.model('User', userSchema)
 
