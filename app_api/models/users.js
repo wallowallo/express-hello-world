@@ -3,7 +3,10 @@ var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
 var userSchema = new mongoose.Schema({
-  username: String,
+  username: {
+   type: String,
+   unique: true
+  },
   hash: String,
   salt: String
 });
@@ -29,4 +32,4 @@ userSchema.methods.generateJwt = function() {
   }, "MY_SECRET"); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
 
-exports.User = mongoose.model('User', userSchema);
+mongoose.model('User', userSchema);
