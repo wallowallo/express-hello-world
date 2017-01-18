@@ -46,7 +46,7 @@ app.delete('/:_id', function(req, res) {
 //   })
 // });
 //
-// app.post('/login', function(req, res) {
+// routesApi.post('/login', function(req, res) {
 //   User.findOne({username: req.body.username}, function(err, user) {
 //       if(err) throw err
 //       if(!user) {
