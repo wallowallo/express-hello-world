@@ -19,15 +19,6 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use('/api', routesApi);
 
-// error handlers
-// Catch unauthorised errors
-app.use(function (err, req, res, next) {
-  if (err.name === 'UnauthorizedError') {
-    res.status(401);
-    res.json({"message" : err.name + ": " + err.message});
-  }
-});
-
 app.get('/', function (req, res) {
   Todo.find({}, function(err, todos) {
     res.send({data:todos})
