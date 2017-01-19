@@ -25,9 +25,17 @@ app.get('/', function (req, res) {
   })
 });
 
-app.post('/', function(req, res, next) {
+//:id
+app.get('/:userId', function (req, res) {
+  console.log(req.params.userId)
+  Todo.findById(req.params.userId, function(err, todos) {
+    res.send({data:todos})
+  })
+});
+
+app.post('/:userId', function(req, res, next) {
   var todo = new Todo({
-    username: req.body.username,
+    userId: req.body.userId,
     title: req.body.title,
     description: req.body.description
   })

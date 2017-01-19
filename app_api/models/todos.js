@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 var todoSchema = new mongoose.Schema({
-  username: String,
+  userId: String,
   title: String,
   description: String
 })
