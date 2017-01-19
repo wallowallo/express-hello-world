@@ -27,6 +27,7 @@ app.get('/', function (req, res) {
 
 app.post('/', function(req, res, next) {
   var todo = new Todo({
+    username: req.body.username,
     title: req.body.title,
     description: req.body.description
   })
