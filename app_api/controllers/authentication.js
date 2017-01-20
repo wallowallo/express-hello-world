@@ -8,13 +8,25 @@ var sendJSONresponse = function(res, status, content) {
 };
 
 module.exports.register = function(req, res) {
+  User.schema.pre('save', function (next) {
+      var user = this;
+      User.find({username : user.username}, function (err, users) {
+          if (!users.length){
+              next();
+          }else{
+              next(new Error("User exists!"));
+          }
+      });
+  }) ;
+
   var user = new User();
-
   user.username = req.body.username;
-
   user.setPassword(req.body.password);
 
   user.save(function(err) {
+    if(err) {
+      return res.status(401).json("Username is already taken")
+    }
     var token;
     token = user.generateJwt();
     res.status(200).json({
