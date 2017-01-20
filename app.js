@@ -19,19 +19,13 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use('/api', routesApi);
 
-app.get('/', function (req, res) {
-  Todo.find({}, function(err, todos) {
+
+app.get('/:userId', function (req, res) {
+  var userId = req.params.userId
+  Todo.find({userId}, function(err, todos) {
     res.send({data:todos})
   })
 });
-
-//:id
-// app.get('/:userId', function (req, res) {
-//   console.log(req.params.userId)
-//   Todo.findById(req.params.userId, function(err, todos) {
-//     res.send({data:todos})
-//   })
-// });
 
 app.post('/:userId', function(req, res, next) {
   var todo = new Todo({
