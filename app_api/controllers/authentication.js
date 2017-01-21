@@ -2,11 +2,6 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-var sendJSONresponse = function(res, status, content) {
-  res.status(status);
-  res.json(content);
-};
-
 module.exports.register = function(req, res) {
   User.schema.pre('save', function (next) {
       var user = this;

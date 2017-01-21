@@ -6,11 +6,7 @@ var auth = jwt({
   userProperty: 'payload'
 });
 
-var ctrlTodoPage = require('../controllers/todo-page');
 var ctrlAuth = require('../controllers/authentication');
-
-// profile
-router.get('/todo', auth, ctrlTodoPage.profileRead);
 
 // authentication
 router.post('/register', ctrlAuth.register);
