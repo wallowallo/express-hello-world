@@ -8,9 +8,9 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport');
 
 var Todo = require('./app_api/models/todos').Todo
-var routesApi = require('./app_api/routes/index');
 require('./app_api/models/db');
 require('./app_api/config/passport');
+var routesApi = require('./app_api/routes/index');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
