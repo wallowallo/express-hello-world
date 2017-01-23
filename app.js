@@ -19,6 +19,10 @@ app.use(passport.initialize());
 app.use('/api', routesApi);
 
 
+app.get('/', function (req, res) {
+    res.send({data: "hello"})
+});
+
 app.get('/:userId', function (req, res) {
   var userId = req.params.userId
   Todo.find({userId}, function(err, todos) {
