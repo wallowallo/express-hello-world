@@ -11,6 +11,7 @@ var Todo = require('./app_api/models/todos').Todo
 require('./app_api/models/db');
 require('./app_api/config/passport');
 var routesApi = require('./app_api/routes/index');
+var port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -48,6 +49,6 @@ app.delete('/:_id', function(req, res) {
   })
 })
 
-app.listen(3000, function() {
-  console.log('app listening on port 3000');
+app.listen(port, function() {
+  console.log('app listening on port ' + port);
 });
