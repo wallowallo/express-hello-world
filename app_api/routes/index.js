@@ -7,7 +7,6 @@ var auth = jwt({
   userProperty: 'payload'
 });
 
-router.use(cors());
 
 var ctrlAuth = require('../controllers/authentication');
 
