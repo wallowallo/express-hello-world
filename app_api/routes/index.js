@@ -1,10 +1,13 @@
 var express = require('express');
+var cors = require('cors');
 var router = express.Router();
 var jwt = require('express-jwt');
 var auth = jwt({
   secret: 'MY_SECRET',
   userProperty: 'payload'
 });
+
+router.use(cors());
 
 var ctrlAuth = require('../controllers/authentication');
 
