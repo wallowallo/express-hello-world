@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 
+var cors = require('cors');
 var jwt = require('jsonwebtoken');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
+app.use(cors());
 app.use('/api', routesApi);
 
 
