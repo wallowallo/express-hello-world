@@ -1,1 +1,1 @@
-server: node app.js
+server: npm start
