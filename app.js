@@ -21,6 +21,10 @@ app.use(passport.initialize());
 app.use(cors());
 app.use('/api', routesApi);
 
+app.get('/', function (req, res) {
+  res.json({'hello': 'world'})
+})
+
 
 app.get('/:userId', function (req, res) {
   var userId = req.params.userId
