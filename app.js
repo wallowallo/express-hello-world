@@ -21,10 +21,11 @@ app.use(passport.initialize());
 app.use(cors());
 app.use('/api', routesApi);
 
-app.get('/', function (req, res) {
-  res.json({'hello': 'world'})
-})
+app.use(express.static(__dirname + '/dist'));
 
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 
 app.get('/:userId', function (req, res) {
   var userId = req.params.userId
